@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/messages") // http://localhost:8070/messages
+@RequestMapping("/messages")
 public class ContactMessageController {
 
     @Autowired
@@ -57,7 +57,7 @@ public class ContactMessageController {
         return new ResponseEntity<>(allMessagesByEmail, HttpStatus.OK);
     }
 
-    @GetMapping("/contains")
+    @GetMapping("/search")
     public ResponseEntity<List<ContactMessage>> findAllWordContainerMessages(@RequestParam String word) {
         List<ContactMessage> wordContainerMessages = contactMessageService.findAllWordContainerMessages(word);
         return ResponseEntity.ok(wordContainerMessages);
@@ -88,7 +88,7 @@ public class ContactMessageController {
     }
 
     @GetMapping("/findByDateRange")
-    public ResponseEntity<List<ContactMessage>> findMessagesByDateRange(
+    public ResponseEntity<List<ContactMessage>> findMessagesByDateRange(//2023-10-15  2023-10-25
             @RequestParam String startDate,
             @RequestParam String endDate
     ) {
@@ -99,7 +99,7 @@ public class ContactMessageController {
     }
 
     @GetMapping("/findByDateRange2")
-    public ResponseEntity<List<ContactMessage>> findMessagesByDateRange2(
+    public ResponseEntity<List<ContactMessage>> findMessagesByDateRange2( //15-10-2023  25-10-2023
             @RequestParam("startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate startDate,
             @RequestParam("endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate endDate
     ) {

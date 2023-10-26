@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -55,12 +56,12 @@ public class ContactMessage {
         creationDateTime = LocalDateTime.parse(formattedDate, formatter).withSecond(0).withNano(0);
     }
 
-    //@PrePersist
-    public LocalDateTime prePersist() {
-        LocalDateTime now = LocalDateTime.now(ZoneId.of("US/Eastern"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        String formattedDate = now.format(formatter);
-        now = LocalDateTime.parse(formattedDate, formatter).withSecond(0).withNano(0);
-        return now;
-    }
+//    //@PrePersist
+//    public LocalDateTime prePersist() {
+//        LocalDateTime now = LocalDateTime.now(ZoneId.of("US/Eastern"));
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//        String formattedDate = now.format(formatter);
+//        now = LocalDateTime.parse(formattedDate, formatter).withSecond(0).withNano(0);
+//        return now;
+//    }
 }
